@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+
+  conge-database:
+    image: mysql:8
+    container_name: conge-mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: conge
+      MYSQL_ROOT_PASSWORD: conge
+    ports:
+      - "3307:3306"
+    volumes:
+      - /var/lib/mysql/conge-data:/var/lib/mysql
+    networks:
+      - conge-network
+
+networks:
+  conge-network:
+    driver: bridge
